@@ -48,4 +48,14 @@ public class Deck {
         return c;
     }
 
+    // NEW: return of the count of Suit or Rank (depending on which enum you pass).
+    long getRemaining(Object obj) {
+    	if (obj instanceof eSuit) {
+    		return cards.stream().filter(c -> c.geteSuit() == (eSuit)obj).count();
+    	} else if (obj instanceof eRank) {
+    		return cards.stream().filter(c -> c.geteRank() == (eRank)obj).count();
+    	} else {
+    		throw new RuntimeException("Cannot accept object other than eSuit or eRank");
+    	}
+    }
 }
